@@ -54,7 +54,7 @@ def tradie_token(participant: Participant):
             type='group',
             record_participants_on_connect=True,
             unique_name=participant.room_name,
-            max_participants=2,
+            max_participants=3,
             # VideoCodecs="H264"
         )
     access_token = AccessToken(
@@ -85,10 +85,8 @@ async def detect_sms(sms:SMS):
 @app.post("/fiber_detection/")
 async def fiber_detection(file: UploadFile):
     im = Image.open(file.file)
-    result = game_detection(image=im)
-    return {
-        "test": "done"
-    }
+    return game_detection(image=im)
+    
 
 
 def detection_queue():
