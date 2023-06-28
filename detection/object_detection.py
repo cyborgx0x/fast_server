@@ -9,7 +9,7 @@ model = YOLO('model/albion/fiber.pt')
 
 def game_detection(image):
 
-    results = model.predict(image)
+    results = model.predict(image, device="cpu")
     return run(results[0])
 
 def run(result):
